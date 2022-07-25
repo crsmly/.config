@@ -11,5 +11,10 @@ return require('packer').startup(function()
   'nvim-lualine/lualine.nvim',
   requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
-  use{'github/copilot.vim'}
+  use {'github/copilot.vim'}
+  use {'neovim/nvim-lsp'}
+  use {'neovim/nvim-lspconfig'}
+  use {'nvim-telescope/telescope.nvim'}
+  use {'nvim-treesitter/nvim-treesitter'}
+  use {'nvim-lua/plenary.nvim'}
 end)
