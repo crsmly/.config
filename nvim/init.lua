@@ -1,8 +1,9 @@
 require('plugins')
+require('ls')
 local builtin = require('telescope.builtin')
 
 -- Theme
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme "catppuccin-latte"
 -- Relative line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -21,6 +22,12 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+vim.api.nvim_set_keymap(
+  "n",
+  "<space>fb",
+  ":Telescope file_browser<Enter>",
+  { noremap = true }
+)
 
 -- Bind 'jk' to enter command mode in insert mode
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', {noremap = true})
