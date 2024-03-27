@@ -1,4 +1,9 @@
 Autodesk
 iterm2
 envman
+<<<<<<< Updated upstream
 tmux/plugins
+=======
+configstore
+filezilla
+>>>>>>> Stashed changes
