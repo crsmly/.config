@@ -16,6 +16,24 @@ require('plugins')
 require('ls')
 local builtin = require('telescope.builtin')
 
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all"
+  ensure_installed = {"elixir", "lua", "javascript"}, -- or "all"
+
+  -- Automatically install missing parsers when entering buffer
+  auto_install = true,
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- List of language that will be disabled
+    -- disable = { "c", "rust" },
+
+    additional_vim_regex_highlighting = false,
+  },
+}
+
 -- Theme
 vim.cmd.colorscheme "catppuccin-mocha"
 -- Relative line numbers
@@ -40,3 +58,4 @@ vim.keymap.set('n', '<leader>ee',':E<CR>', {})
 
 -- Bind 'jk' to enter command mode in insert mode
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', {noremap = true})
+

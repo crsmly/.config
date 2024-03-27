@@ -4,12 +4,19 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'volar', 'tsserver' }
+local servers = { 'volar', 'tsserver', 'elixirls' }
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    -- on_attach = my_custom_on_attach,
-    capabilities = capabilities,
-  }
+    if lsp == "elixirls" then
+        lspconfig[lsp].setup{
+            capabilities = capabilities,
+            cmd = {"/Users/christiemolloy/lsp/elixir-ls/bin/language_server.sh"}
+        }
+    else
+        lspconfig[lsp].setup {
+            -- on_attach = my_custom_on_attach,
+            capabilities = capabilities,
+        }
+    end
 end
 
 -- luasnip setup
