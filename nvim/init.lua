@@ -35,16 +35,32 @@ require'nvim-treesitter.configs'.setup {
 }
 
 -- Theme
-vim.cmd.colorscheme "catppuccin-mocha"
+vim.cmd.colorscheme "rose-pine-dawn"
+
 -- Relative line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.scrolloff = 10
+
+-- Clipboard
+vim.opt.clipboard = 'unnamedplus'
+
+-- Search
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+-- Updatetime
+vim.opt.updatetime = 250
 
 -- 4 space tabs
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+vim.opt.autoindent = true
 
+-- Blinking cursor
+vim.opt.guicursor = vim.opt.guicursor + "a:blinkon1"
+vim.opt.ttyfast = true
 -- ---- KEYBINDS ---- --
 -- Bind space to leader key
 vim.g.mapleader = ' '
