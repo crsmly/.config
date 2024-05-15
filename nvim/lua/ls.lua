@@ -4,12 +4,17 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'volar', 'tsserver', 'elixirls' }
+local servers = { 'volar', 'tsserver', 'elixirls', 'pylsp', 'gopls' }
 for _, lsp in ipairs(servers) do
     if lsp == "elixirls" then
         lspconfig[lsp].setup{
             capabilities = capabilities,
             cmd = {"/Users/christiemolloy/lsp/elixir-ls/bin/language_server.sh"}
+        }
+    elseif lsp == "gopls" then
+        lspconfig[lsp].setup{
+            capabilities = capabilities,
+            cmd = {"/Users/christiemolloy/go/bin/gopls"}
         }
     else
         lspconfig[lsp].setup {

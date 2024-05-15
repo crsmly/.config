@@ -18,7 +18,7 @@ local builtin = require('telescope.builtin')
 
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = {"elixir", "lua", "javascript"}, -- or "all"
+  ensure_installed = {"elixir","go", "lua", "javascript", "python"}, -- or "all"
 
   -- Automatically install missing parsers when entering buffer
   auto_install = true,
@@ -33,9 +33,19 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+require("rose-pine").setup({
+    variant = "dawn",
+    dark_variant = "main",
+    extend_background_behind_borders = true,
+    enable = {
+        terminal = true
+    }
+})
 
 -- Theme
-vim.cmd.colorscheme "rose-pine-dawn"
+vim.o.background = "light"
+vim.cmd("colorscheme rose-pine-dawn")
+vim.opt.termguicolors = true
 
 -- Relative line numbers
 vim.opt.number = true
