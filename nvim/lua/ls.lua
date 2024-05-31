@@ -2,26 +2,62 @@
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local lspconfig = require('lspconfig')
+-- Create a single autocommand group for LSP formatting
+local lspFormattingGroup = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
+
+-- Function to enable format on save
+local on_attach = function(client, bufnr)
+    print("LSP started.")  -- Debug message
+    if client.server_capabilities.documentFormattingProvider then
+        print("Formatting supported.")  -- Debug message
+        vim.api.nvim_clear_autocmds({ group = lspFormattingGroup, buffer = bufnr })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = lspFormattingGroup,
+            buffer = bufnr,
+            callback = function()
+                print("Formatting on save.")  -- Debug message
+                vim.lsp.buf.format({ bufnr = bufnr })
+            end
+        })
+    end
+end
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'volar', 'tsserver', 'elixirls', 'pylsp', 'gopls' }
+local servers = { 'volar', 'tsserver', 'elixirls', 'pylsp', 'gopls', 'eslint' }
 for _, lsp in ipairs(servers) do
+    local config = {
+        capabilities = capabilities,
+        on_attach = on_attach,
+    }
+    
     if lsp == "elixirls" then
-        lspconfig[lsp].setup{
-            capabilities = capabilities,
-            cmd = {"/Users/christiemolloy/lsp/elixir-ls/bin/language_server.sh"}
-        }
+        config.cmd = {"/Users/christiemolloy/lsp/elixir-ls/bin/language_server.sh"}
     elseif lsp == "gopls" then
-        lspconfig[lsp].setup{
-            capabilities = capabilities,
-            cmd = {"/Users/christiemolloy/go/bin/gopls"}
+        config.cmd = {"/Users/christiemolloy/go/bin/gopls"}
+    elseif lsp == 'eslint' then
+        config.settings = {
+            format = {
+                enable = true
+            }
         }
-    else
-        lspconfig[lsp].setup {
-            -- on_attach = my_custom_on_attach,
-            capabilities = capabilities,
+        config.handlers = {
+            ['window/showMessageRequest'] = function(_, result)
+                return result.message:match('ENOENT') and vim.NIL or result
+            end,
         }
+        config.on_attach = function(client, bufnr)
+            client.server_capabilities.documentFormattingProvider = true
+            on_attach(client, bufnr)
+        end
+    elseif lsp == "tsserver" then
+        config.on_attach = function(client, bufnr)
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+            on_attach(client, bufnr)
+        end
     end
+    
+    lspconfig[lsp].setup(config)
 end
 
 -- luasnip setup
