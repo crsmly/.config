@@ -34,7 +34,7 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 require("rose-pine").setup({
-    variant = "dawn",
+    variant = "",
     dark_variant = "main",
     extend_background_behind_borders = true,
     enable = {
@@ -43,8 +43,8 @@ require("rose-pine").setup({
 })
 
 -- Theme
-vim.o.background = "light"
-vim.cmd("colorscheme rose-pine-dawn")
+vim.o.background = "dark"
+vim.cmd("colorscheme rose-pine")
 vim.opt.termguicolors = true
 
 -- Relative line numbers
@@ -80,7 +80,7 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-vim.keymap.set('n', '<leader>ee',':E<CR>', {})
+vim.keymap.set('n', '<leader>ee',':Explore<CR>', {})
 
 -- Bind 'jk' to enter command mode in insert mode
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', {noremap = true})
