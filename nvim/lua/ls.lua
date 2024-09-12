@@ -7,15 +7,12 @@ local lspFormattingGroup = vim.api.nvim_create_augroup("LspFormatting", { clear 
 
 -- Function to enable format on save
 local on_attach = function(client, bufnr)
-    print("LSP started.")  -- Debug message
     if client.server_capabilities.documentFormattingProvider then
-        print("Formatting supported.")  -- Debug message
         vim.api.nvim_clear_autocmds({ group = lspFormattingGroup, buffer = bufnr })
         vim.api.nvim_create_autocmd("BufWritePre", {
             group = lspFormattingGroup,
             buffer = bufnr,
             callback = function()
-                print("Formatting on save.")  -- Debug message
                 vim.lsp.buf.format({ bufnr = bufnr })
             end
         })
@@ -23,7 +20,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'volar', 'tsserver', 'elixirls', 'pylsp', 'gopls', 'eslint' }
+local servers = { 'volar', 'ts_ls', 'elixirls', 'pylsp', 'gopls', 'eslint' }
 for _, lsp in ipairs(servers) do
     local config = {
         capabilities = capabilities,
@@ -40,6 +37,7 @@ for _, lsp in ipairs(servers) do
                 enable = true
             }
         }
+
         config.handlers = {
             ['window/showMessageRequest'] = function(_, result)
                 return result.message:match('ENOENT') and vim.NIL or result
@@ -49,7 +47,7 @@ for _, lsp in ipairs(servers) do
             client.server_capabilities.documentFormattingProvider = true
             on_attach(client, bufnr)
         end
-    elseif lsp == "tsserver" then
+    elseif lsp == "ts_ls" then
         config.on_attach = function(client, bufnr)
             client.server_capabilities.documentFormattingProvider = false
             client.server_capabilities.documentRangeFormattingProvider = false

@@ -18,7 +18,7 @@ local builtin = require('telescope.builtin')
 
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = {"elixir","go", "lua", "javascript", "python"}, -- or "all"
+  ensure_installed = {"elixir","go", "lua", "javascript","typescript", "python"}, -- or "all"
 
   -- Automatically install missing parsers when entering buffer
   auto_install = true,
