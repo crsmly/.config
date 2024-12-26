@@ -1,7 +1,0 @@
-import = ["~/.config/alacritty/rose-pine-dawn.toml"]
-
-[font]
-    size = 14.0
-    normal = { family = "ZedMono NF", style = "Regular" }
-    bold = { family = "ZedMono NF", style = "Bold"}
-    offset = {x = 2, y = 0}
