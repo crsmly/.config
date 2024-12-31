@@ -1,0 +1,9 @@
+#NVM
+alias nvm="fnm"
+
+#EZA
+alias ls="eza"
+alias lsal="eza -al --icons --no-user --no-filesize -o --no-permissions --time-style=relative"
+
+#NVIM
+alias nv="nvim ."

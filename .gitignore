@@ -1,9 +1,8 @@
 Autodesk
 iterm2
 envman
-<<<<<<< Updated upstream
 tmux/plugins
-=======
+nvim/pack
 configstore
 filezilla
->>>>>>> Stashed changes
+github-copilot

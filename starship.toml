@@ -1,2 +1,4 @@
 [aws]
 disabled = true
+[rust]
+disabled = true

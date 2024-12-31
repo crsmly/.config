@@ -33,19 +33,10 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
-require("rose-pine").setup({
-    variant = "",
-    dark_variant = "main",
-    extend_background_behind_borders = true,
-    enable = {
-        terminal = true
-    }
-})
 
 -- Theme
 vim.o.background = "dark"
-vim.cmd("colorscheme rose-pine")
-vim.opt.termguicolors = true
+vim.cmd("colorscheme terafox")
 
 -- Relative line numbers
 vim.opt.number = true
