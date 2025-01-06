@@ -1,17 +1,19 @@
+bat
 brotli
 c-ares
 ca-certificates
 elixir
 erlang
 eza
+fd
 fnm
+fzf
 gcc
 gdbm
 gettext
 git
 gmp
 go
-go-task
 gopls
 icu4c@76
 isl
@@ -60,4 +62,3 @@ wxwidgets
 xz
 zstd
 dbeaver-community
-wezterm

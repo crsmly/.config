@@ -1,0 +1,19 @@
+# This file is intended to be imported by the main .zshrc file in the user's home directory.
+# It only contains confifuguratino that is not specific to a particular machine.
+# i.e do NOT put machine-specific configuration here like secrets, paths, etc.
+
+# ----- FZF Configuration -----
+source <(fzf --zsh)
+
+export FZF_DEFUALT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFUALT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type d --hidden --strip-cwd-prefix --exclude .git"
+
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+_fzf_compgen_dir() {
+  fd --type d --hidden --exclude .git . "$1"
+}
+

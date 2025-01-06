@@ -1,9 +1,19 @@
 #NVM
 alias nvm="fnm"
 
-#EZA
+#LS
 alias ls="eza"
 alias lsal="eza -al --icons --no-user --no-filesize -o --no-permissions --time-style=relative"
 
 #NVIM
 alias nv="nvim ."
+
+#CAT
+alias cat="bat --paging=never"
+
+#GIT
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gaa="git add ."
+alias gp="git push"

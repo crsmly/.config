@@ -75,3 +75,8 @@ vim.keymap.set('n', '<leader>ee',':Explore<CR>', {})
 
 -- Bind 'jk' to enter command mode in insert mode
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', {noremap = true})
+
+-- netrw
+vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 3
+

@@ -30,7 +30,7 @@ for _, lsp in ipairs(servers) do
     if lsp == "elixirls" then
         config.cmd = {"/Users/christiemolloy/lsp/elixir-ls/bin/language_server.sh"}
     elseif lsp == "gopls" then
-        config.cmd = {"/Users/christiemolloy/go/bin/gopls"}
+        config.cmd = {"gopls"}
     elseif lsp == 'eslint' then
         config.settings = {
             format = {
