@@ -14,4 +14,5 @@ return require('packer').startup(function(use)
     use 'L3MON4D3/LuaSnip' -- Snippets plugin
     use "nvim-telescope/telescope-file-browser.nvim"
     use 'nvim-treesitter/nvim-treesitter'
+    use "nvimtools/none-ls.nvim"
 end)

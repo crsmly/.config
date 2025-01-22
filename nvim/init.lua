@@ -54,10 +54,13 @@ vim.opt.smartcase = true
 vim.opt.updatetime = 250
 
 -- 4 space tabs
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.autoindent = true
+
+-- line wrap
+vim.opt.wrap = false
 
 -- Blinking cursor
 vim.opt.guicursor = vim.opt.guicursor + "a:blinkon1"
