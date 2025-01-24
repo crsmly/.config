@@ -18,6 +18,7 @@ alias gc="git commit"
 alias gaa="git add ."
 alias gp="git push"
 
+<<<<<<< Updated upstream
 #TMUX
 alias tmxn='tmux new -s $(basename "$PWD")'
 alias tmxk='tmux kill-server'
@@ -27,3 +28,7 @@ alias tmx='tmux attach'
 alias d="docker"
 alias ds="docker stop $(docker ps -aq)"
 alias dc="docker system prune -a && docker volume prune"
+=======
+#AIR
+alias air="~/go/bin/air"
+>>>>>>> Stashed changes
