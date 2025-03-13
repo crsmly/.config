@@ -45,6 +45,9 @@ lspconfig.volar.setup({
 
 -- null_ls setup
 null_ls.setup({
+    debounce = 150,
+  update_in_insert = false,
+  diagnostics_format = "[#{c}] #{m} (#{s})",
     sources = {
         null_ls.builtins.formatting.prettier.with({
             filetypes = { "vue", "typescript", "javascript" },
@@ -55,10 +58,17 @@ null_ls.setup({
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = {"*.vue", "*.ts", "*.js"},
+    pattern = {"*.vue", "*.ts", "*.js", "*.gleam"},
     callback = function()
         vim.lsp.buf.format({timeout = 2000})
     end,
+})
+
+-- gleam setup
+lspconfig.gleam.setup({
+    cmd = { "gleam", "lsp" },
+    capabilities = capabilities,
+    on_attach = on_attach,
 })
 
 -- ts_ls setup
@@ -104,6 +114,13 @@ lspconfig.gopls.setup({
     on_attach = on_attach,
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.go",
+    callback = function()
+        vim.lsp.buf.format()
+    end,
+})
+
 -- eslint setup
 lspconfig.eslint.setup({
     settings = {
@@ -120,17 +137,18 @@ lspconfig.eslint.setup({
     },
 })
 
--- luasnip setup
-local luasnip = require 'luasnip'
-
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup({
-    snippet = {
-        expand = function(args)
-            luasnip.lsp_expand(args.body)
-        end,
-    },
+    completion = {
+    autocomplete = { require('cmp.types').cmp.TriggerEvent.TextChanged },
+    keyword_length = 1,  -- start suggesting after typing 1 character
+  },
+  performance = {
+    debounce = 60,  -- milliseconds delay before suggestions trigger (default is 60-80)
+    throttle = 30,
+    fetching_timeout = 200,
+  },
     mapping = cmp.mapping.preset.insert({
         ['<C-u>'] = cmp.mapping.scroll_docs(-4),
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
@@ -139,8 +157,6 @@ cmp.setup({
         ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
             else
                 fallback()
             end
@@ -148,8 +164,6 @@ cmp.setup({
         ['<S-Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
             else
                 fallback()
             end
@@ -157,7 +171,6 @@ cmp.setup({
     }),
     sources = {
         { name = 'nvim_lsp' },
-        { name = 'luasnip' },
     },
 })
 

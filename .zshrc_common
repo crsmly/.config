@@ -17,11 +17,9 @@ _fzf_compgen_dir() {
   fd --type d --hidden --exclude .git . "$1"
 }
 
-<<<<<<< Updated upstream
 # ----- FNM Configuration -----
 eval "$(fnm env --use-on-cd --shell zsh)"
-=======
+
 # add go lang to path
 export PATH=$PATH:$HOME/go/bin
 
->>>>>>> Stashed changes
