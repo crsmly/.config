@@ -8,7 +8,7 @@ local ensure_packer = function()
     vim.cmd [[packadd packer.nvim]]
     return true
  end
-  return false
+  return false 
 end
 
 local packer_bootstrap = ensure_packer()
@@ -91,6 +91,9 @@ vim.opt.undofile = true
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldenable = false -- disable automatic folding on file open
+
+vim.opt.lazyredraw = true -- Reduces unnecessary redraws significantly improving speed
+vim.opt.ttyfast = true -- optimized redraw performance
 
 -- Faster key repetition and improved responsiveness
 vim.opt.timeoutlen = 300    -- Time in ms to wait for a mapped sequence
