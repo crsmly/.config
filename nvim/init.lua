@@ -1,5 +1,3 @@
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -16,6 +14,15 @@ local packer_bootstrap = ensure_packer()
 require('plugins')
 require('ls')
 local builtin = require('telescope.builtin')
+
+require("telescope").setup {
+  extensions = {
+    file_browser = {
+      hijack_netrw = true,
+    },
+  },
+}
+require("telescope").load_extension "file_browser"
 
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
@@ -34,7 +41,6 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
-require('nvim-tree').setup()
 
 -- Theme
 vim.o.background = "dark"
@@ -62,7 +68,7 @@ vim.opt.expandtab = true
 vim.opt.autoindent = true
 
 -- line wrap
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 -- Blinking cursor
 vim.opt.guicursor = vim.opt.guicursor + "a:blinkon1"
@@ -76,7 +82,7 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-vim.keymap.set('n', '<leader>ee',':NvimTreeFocus<CR>', {})
+vim.keymap.set("n", "<leader>ee", ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
 
 -- Bind 'jk' to enter command mode in insert mode
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', {noremap = true})
