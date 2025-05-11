@@ -1,8 +1,5 @@
-# This file is intended to be imported by the main .zshrc file in the user's home directory.
-# It only contains confifuguratino that is not specific to a particular machine.
-# i.e do NOT put machine-specific configuration here like secrets, paths, etc.
-
 # ----- FZF Configuration -----
+source ~/.config/.aliases
 source <(fzf --zsh)
 
 export FZF_DEFUALT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
@@ -22,4 +19,6 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 
 # add go lang to path
 export PATH=$PATH:$HOME/go/bin
+
+eval "$(starship init zsh)"
 

@@ -25,7 +25,7 @@ alias tmx='tmux attach'
 
 #DOCKER
 alias d="docker"
-alias ds="docker stop $(docker ps -aq)"
+alias ds='docker stop $(docker ps -aq)'
 alias dc="docker system prune -a && docker volume prune"
 
 #AIR
