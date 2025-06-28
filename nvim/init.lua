@@ -43,8 +43,8 @@ require'nvim-treesitter.configs'.setup {
 }
 
 -- Theme
-vim.o.background = "dark"
-vim.cmd("colorscheme terafox")
+vim.o.background = "dark" 
+vim.cmd([[colorscheme gruvbox]])
 
 -- Relative line numbers
 vim.opt.number = true
@@ -114,3 +114,6 @@ vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
+
+vim.diagnostic.config({ virtual_text = true })
+vim.lsp.set_log_level("off")

@@ -78,7 +78,7 @@ lspconfig.ts_ls.setup({
           {
             name = "@vue/typescript-plugin",
             location = typescriptPlugin,
-            languages = {"javascript", "typescript", "vue"},
+            languages = {"vue"},
           },
         },
     },

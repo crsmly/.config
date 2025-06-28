@@ -1,6 +1,4 @@
-theme = terafox
-background-opacity = 0.95
-background-blur-radius = 20
+theme = gruvboxdark
 
 keybind = cmd+k>x=close_surface
 
