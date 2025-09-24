@@ -26,7 +26,7 @@ require("telescope").load_extension "file_browser"
 
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = {"elixir","go", "lua", "javascript","typescript", "python", "gleam"}, -- or "all"
+  ensure_installed = {"elixir","go", "lua", "javascript","typescript", "python", "gleam", "vue"}, -- or "all"
 
   -- Automatically install missing parsers when entering buffer
   auto_install = true,
