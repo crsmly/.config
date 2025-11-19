@@ -1,4 +1,7 @@
-theme = gruvboxdark
+theme = Catppuccin Latte
+font-family = Lilex
+font-size = 16
+adjust-cursor-thickness = 60%
 
 keybind = cmd+k>x=close_surface
 
