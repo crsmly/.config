@@ -4,8 +4,10 @@ conform.setup({
   formatters_by_ft = {
     javascript = { "prettier", stop_after_first = true },
     typescript = { "prettier", stop_after_first = true },
+    svelte = { "prettier", stop_after_first = true },
     json = { "prettier", stop_after_first = true },
     vue = { "prettier", stop_after_first = true },
+    elixir = { "mix" },
   },
   formatters = {
     prettier = {

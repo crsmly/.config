@@ -1,8 +1,9 @@
 -- ================================
 -- Catppuccin Theme Configuration
 -- ================================
-vim.o.background = "light"
+vim.o.background = "dark"
 require("catppuccin").setup({
+  flavour = "mocha",
   no_italic = true,
 })
-vim.cmd([[colorscheme catppuccin-latte]])
+vim.cmd([[colorscheme catppuccin-mocha]])

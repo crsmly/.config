@@ -7,6 +7,7 @@ return {
   'neovim/nvim-lspconfig',
   {
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
     build = ':TSUpdate'
   },
   'nvim-tree/nvim-web-devicons',
